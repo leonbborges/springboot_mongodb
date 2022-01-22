@@ -32,7 +32,7 @@ public class UserServices {
         return new User(objDTO.getId(), objDTO.getName(), objDTO.getEmail());
     }
     public User update(String id, User obj){
-        User newobj = this.findById(id);
+        User newobj = findById(id);
         updateData(newobj, obj);
         return repository.save(newobj);
     }

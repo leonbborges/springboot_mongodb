@@ -1,4 +1,4 @@
-package javacourse.springboot.springboot_mongodb.resources.exceptions;
+package javacourse.springboot.springboot_mongodb.controller.exceptions;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

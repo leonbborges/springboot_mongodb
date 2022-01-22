@@ -1,5 +1,6 @@
-package javacourse.springboot.springboot_mongodb.resources;
+package javacourse.springboot.springboot_mongodb.controller;
 
+import javacourse.springboot.springboot_mongodb.domain.Post;
 import javacourse.springboot.springboot_mongodb.domain.User;
 import javacourse.springboot.springboot_mongodb.dto.UserDTO;
 import javacourse.springboot.springboot_mongodb.services.UserServices;
@@ -14,7 +15,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/users")
-public class UserResource {
+public class UserController {
     @Autowired
     private UserServices service;
 
@@ -50,6 +51,11 @@ public class UserResource {
         User obj = service.fromDTO(objDTO);
         obj = service.update(id, obj);
         return ResponseEntity.ok().body(obj);
-}
+    }
+    @GetMapping("/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+        User obj = service.findById(id);
+        return ResponseEntity.ok().body(obj.getPosts());
+    }
 
 }
